@@ -1,0 +1,70 @@
+[package]
+name = "hello_cargo"
+version = "0.1.0"
+authors = ["happyspace <happyspace@gmail.com>"]
+edition = "2018"
+autobins = false
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "hello_cargo"
+path = "src/main.rs"
+
+[[bin]]
+name="minigrep"
+path = "src/minigrep.rs"
+
+[[bin]]
+name="my-redis"
+path = "src/my_redis.rs"
+
+[[bin]]
+name="rds-srv"
+path="src/rds_srv.rs"
+
+[[bin]]
+name="bootstrap"
+path="src/rust_happy.rs"
+
+[workspace]
+members = [
+  "misc",
+  "hello_macro",
+  "messenger",
+  "lang",
+  "lists",
+  "grep",
+]
+
+[dependencies]
+lambda_runtime = "^0.2.1"
+tokio= {version = "^0.2", features = ["full"]}
+mini-redis = "0.2"
+bytes = "0.5"
+parking_lot = "0.11"
+rand = "0.7"
+log = "^0.4"
+log4rs = "^0.13"
+env_logger = "*"
+
+simple-error = "0.2.3"
+simple_logger = "1.6.0"
+
+rusoto_core = {version = "0.46.0", default_features = false, features=["rustls"]}
+rusoto_s3 = {version = "0.46.0", default_features = false, features=["rustls"]}
+rusoto_sqs = {version = "0.46.0", default_features = false, features=["rustls"]}
+rusoto_dynamodb = {version = "0.46.0", default_features = false, features=["rustls"]}
+
+serde = { version = "^1.0", features = ["derive"] }
+serde_json = "^1.0"
+
+
+# rand_core = { path = "rand_core", version = "0.5.1" }
+misc = { path = "misc" }
+hello_macro = { path = "hello_macro" }
+hello_macro_derive = { path="hello_macro//hello_macro_derive" }
+messenger = { path = "messenger" }
+lang = {path = "lang"}
+lists = {path = "lists"}
+grep = {path = "grep"}
